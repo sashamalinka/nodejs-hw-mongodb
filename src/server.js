@@ -1,6 +1,7 @@
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
+
 import { getEnvVar } from './utils/getEnvVar.js';
 import contactsRouter from './routers/contacts.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -12,7 +13,6 @@ export const setupServer = () => {
   const app = express();
 
   app.use(express.json());
-
   app.use(cors());
 
   app.use(
@@ -28,6 +28,7 @@ export const setupServer = () => {
       message: 'Hello world!',
     });
   });
+
   app.use(contactsRouter);
 
   app.use('*', notFoundHandler);
