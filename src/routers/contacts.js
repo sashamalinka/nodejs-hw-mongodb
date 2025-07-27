@@ -14,7 +14,6 @@ import {
 } from '../validation/contacts.js';
 import { isValidID } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
-// import { checkUser } from '../middlewares/checkUser.js';
 
 const router = Router();
 
