@@ -3,7 +3,7 @@ import {
   createContactController,
   deleteContactController,
   getContactByIdController,
-  getContactsController,
+  getAllContactsController,
   patchContactController,
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
@@ -19,7 +19,7 @@ const router = Router();
 
 router.use(authenticate);
 
-router.get('/', ctrlWrapper(getContactsController));
+router.get('/', ctrlWrapper(getAllContactsController));
 router.get('/:contactId', isValidID, ctrlWrapper(getContactByIdController));
 router.post(
   '/',
