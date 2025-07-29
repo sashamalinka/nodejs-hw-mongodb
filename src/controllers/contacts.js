@@ -35,7 +35,6 @@ export const getAllContactsController = async (req, res) => {
 export const getContactByIdController = async (req, res) => {
   const id = req.params.contactId;
   const userId = req.user._id;
-
   const contact = await getContactById(id, userId);
 
   if (!contact) {
@@ -44,7 +43,7 @@ export const getContactByIdController = async (req, res) => {
 
   res.status(200).json({
     status: 200,
-    message: `Successfully found contact with id ${id}`,
+    message: `Successfully found contact with ${id}`,
     data: contact,
   });
 };
@@ -52,7 +51,6 @@ export const getContactByIdController = async (req, res) => {
 export const createContactController = async (req, res) => {
   const { body } = req;
   const userId = req.user._id;
-
   const contact = await createContact(body, userId);
 
   res.status(201).json({
@@ -65,7 +63,6 @@ export const createContactController = async (req, res) => {
 export const patchContactController = async (req, res) => {
   const id = req.params.contactId;
   const userId = req.user._id;
-
   const contact = await updateContact(id, req.body, userId);
 
   if (!contact) {
@@ -82,7 +79,6 @@ export const patchContactController = async (req, res) => {
 export const deleteContactController = async (req, res) => {
   const id = req.params.contactId;
   const userId = req.user._id;
-
   const contact = await deleteContactById(id, userId);
 
   if (!contact) {
