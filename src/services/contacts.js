@@ -1,5 +1,5 @@
 import { SORT_ORDER } from '../constants/constants.js';
-import ContactsCollection from '../db/models/contact.js';
+import ContactsCollection from '../db/models/Contact.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 import { saveFile } from '../utils/saveFile.js';
 
