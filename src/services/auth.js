@@ -9,7 +9,7 @@ import {
   TEMPLATES_DIR,
 } from '../constants/constants.js';
 import jwt from 'jsonwebtoken';
-import { getEnvVar } from '../utils/getEnvVar.js';
+import getEnvVar from '../utils/getEnvVar.js';
 import { sendEmail } from '../utils/sendMail.js';
 import handlebars from 'handlebars';
 import path from 'node:path';
