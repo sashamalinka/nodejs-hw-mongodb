@@ -132,7 +132,7 @@ export const requestResetToken = async (email) => {
       html,
     });
   } catch (err) {
-    console.log(err);
+    console.error('Помилка при відправці емейла:', err); // <-- Ось тут лог повної помилки
     throw createHttpError(
       500,
       'Failed to send the email, please try again later',
