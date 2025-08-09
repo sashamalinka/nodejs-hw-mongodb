@@ -17,12 +17,15 @@ import { upload } from '../middlewares/multer.js';
 
 const contactsRouter = Router();
 
-contactsRouter.use('/:contactId', isValidID);
-contactsRouter.use('/', authenticate);
+contactsRouter.use(authenticate);
 
 contactsRouter.get('/', ctrlWrapper(getAllContactsController));
 
-contactsRouter.get('/:contactId', ctrlWrapper(getContactByIdController));
+contactsRouter.get(
+  '/:contactId',
+  isValidID,
+  ctrlWrapper(getContactByIdController),
+);
 
 contactsRouter.post(
   '/',
@@ -33,11 +36,16 @@ contactsRouter.post(
 
 contactsRouter.patch(
   '/:contactId',
+  isValidID,
   upload.single('photo'),
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
 
-contactsRouter.delete('/:contactId', ctrlWrapper(deleteContactController));
+contactsRouter.delete(
+  '/:contactId',
+  isValidID,
+  ctrlWrapper(deleteContactController),
+);
 
 export default contactsRouter;

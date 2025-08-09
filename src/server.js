@@ -1,5 +1,4 @@
 import 'dotenv/config';
-
 import express from 'express';
 
 import pino from 'pino-http';
@@ -11,6 +10,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import rootRouter from './routers/index.js';
 import cookieParser from 'cookie-parser';
 import { UPLOAD_DIR } from './constants/constants.js';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 export default function setupServer() {
   const PORT = Number(getEnvVar('PORT', 3000));
@@ -29,6 +29,8 @@ export default function setupServer() {
 
   app.use('/uploads', express.static(UPLOAD_DIR));
   app.use(rootRouter);
+
+  app.use('/api-docs', swaggerDocs());
 
   app.use('*', notFoundHandler);
   app.use(errorHandler);
